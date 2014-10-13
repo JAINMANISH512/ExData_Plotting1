@@ -13,8 +13,11 @@ Date_Time<-strptime(Join, "%d/%m/%Y %H:%M:%S")
 Adding this column of Date_Time to original Data set
 dat<-cbind(dat,Date_Time)
 
+#Open png device
+png(filename = "plot4.png",width = 480, height = 480)
+
 #To create 2X2 plots on single page row wise and setmargins
-par(mfrow=c(2,2),mar=c(6,4,2,1))
+par(mfrow=c(2,2))
 
 #Create 1st plot
 with(dat,plot(Date_Time,Global_active_power,xlab="",ylab="Global Active Power (kilowatts)",type="l"))
@@ -31,13 +34,10 @@ points(dat$Date_Time,dat$Sub_metering_1,type="l",col="Black")
 points(dat$Date_Time,dat$Sub_metering_2,type="l",col="Red")
 points(dat$Date_Time,dat$Sub_metering_3,type="l",col="Blue")
 legend("topright", legend=c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), lwd=1,
-       col=c("black", "red", "blue"),cex=0.25)
+       col=c("black", "red", "blue"))
 
 #Create 4nd plot
 with(dat,plot(Date_Time,Global_reactive_power,xlab="datetime",type="l"))
-
-#Copy to png device png device
-dev.copy(png,filename = "plot4.png",width = 480, height = 480)
 
 #close png device
 dev.off()
