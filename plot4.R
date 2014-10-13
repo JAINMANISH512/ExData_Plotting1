@@ -4,7 +4,7 @@ library(sqldf)
 dat <- read.csv.sql("household_power_consumption.txt", sql = "SELECT * from file
                     WHERE Date in ('1/2/2007' , '2/2/2007') ", sep = ";", header = TRUE)
 
-#combining Date and Time Clumn into one
+#combining Date and Time Column into one
 Join<-paste(dat$Date,dat$Time)
 
 #Coverting into objects of classes "POSIXlt" and "POSIXct" representing calendar dates and times.
@@ -13,7 +13,7 @@ Date_Time<-strptime(Join, "%d/%m/%Y %H:%M:%S")
 Adding this column of Date_Time to original Data set
 dat<-cbind(dat,Date_Time)
 
-#Open png device
+#Open png device,rather then copying as legend size maybe a problem during conversion
 png(filename = "plot4.png",width = 480, height = 480)
 
 #To create 2X2 plots on single page row wise and setmargins

@@ -4,7 +4,7 @@ library(sqldf)
 dat <- read.csv.sql("household_power_consumption.txt", sql = "SELECT * from file
 WHERE Date in ('1/2/2007' , '2/2/2007') ", sep = ";", header = TRUE)
 
-#combining Date and Time Clumn into one
+#combining Date and Time Column into one
 Join<-paste(dat$Date,dat$Time)
 
 #Coverting into objects of classes "POSIXlt" and "POSIXct" representing calendar dates and times.
