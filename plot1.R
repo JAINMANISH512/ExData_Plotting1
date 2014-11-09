@@ -1,6 +1,6 @@
 
 
-#package for SQL query
+#package for SQL query.
 library(sqldf)
 
 #To read from a csv file using a SQL query
